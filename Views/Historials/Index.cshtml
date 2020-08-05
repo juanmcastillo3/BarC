@@ -1,0 +1,59 @@
+﻿@model IEnumerable<BarC.Models.Historial>
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+@using Microsoft.AspNetCore.Http
+
+@{
+    var role = @ViewBag.role;
+    if (role == 1)
+    {
+        Layout = "~/Views/Shared/_Menu.cshtml";
+    }
+    if (role == 2)
+    {
+        Layout = "~/Views/Shared/_MenuUsuario.cshtml";
+    }
+        ViewData["Title"] = "Index";
+
+    }
+
+    <h1 class="titulos">HISTORIAL</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    PEDIDO
+                </th>
+                <th>
+                    TOTAL
+                </th>
+                <th>
+                    FECHA
+                </th>
+                <th>
+                    USUARIO
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IdPedido)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Total)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Fecha)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Usuario)
+                    </td>
+
+                </tr>
+            }
+        </tbody>
+    </table>

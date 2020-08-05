@@ -1,0 +1,63 @@
+﻿@model IEnumerable<BarC.Models.Pedido>
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+@using Microsoft.AspNetCore.Http
+
+@{
+    var role = @ViewBag.role;
+    if (role == 1)
+    {
+        Layout = "~/Views/Shared/_Menu.cshtml";
+    }
+    if (role == 2)
+    {
+        Layout = "~/Views/Shared/_MenuUsuario.cshtml";
+    }
+
+    ViewData["Title"] = "Index";
+
+}
+
+
+
+<h1 class="titulos">PEDIDOS</h1>
+
+
+<table class="table">
+    <thead class="tablas">
+        <tr>
+            <th>PEDIDO</th>
+            <th>USUARIO</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+
+            <tr>
+                <td>
+
+                    <h4> @item.IdNumero</h4>
+                </td>
+                <td>
+
+                    <h4> @item.IdUsuario</h4>
+                </td>
+                <td>
+
+                    <a class="btn btn-outline-warning btn-sm" asp-action="Edit" asp-route-id="@item.IdNumero">Editar</a>
+                    <a class="btn btn-outline-danger btn-sm" asp-action="Delete" asp-route-id="@item.IdNumero">Cerrar Pedido</a>
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<p>
+    <form asp-action="Create">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <input type="submit" value="Crear Nuevo" class="btn btn-warning btn-lg" />
+        </div>
+    </form>
+</p>

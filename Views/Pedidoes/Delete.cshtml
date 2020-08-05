@@ -1,0 +1,37 @@
+﻿@model BarC.Models.Pedido
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+@using Microsoft.AspNetCore.Http
+
+@{
+    var role = @ViewBag.role;
+    if (role == 1)
+    {
+        Layout = "~/Views/Shared/_Menu.cshtml";
+    }
+    if (role == 2)
+    {
+        Layout = "~/Views/Shared/_MenuUsuario.cshtml";
+    }
+    ViewData["Title"] = "Delete";
+
+}
+    <div class="intermedio">
+
+        <h2>Cerrar Pedido </h2>
+        <hr />
+
+        <h3>Desea cerrar pedido</h3>
+        <h3>Costo del pedido @ViewBag.montoFIN</h3>
+
+        <div>
+            <hr />
+            <dl class="dl-horizontal">
+            </dl>
+
+            <form asp-action="Delete">
+                <input type="hidden" asp-for="IdNumero" />
+                <input type="submit" value="Cerrar" class="btn btn-danger btn-lg" />
+                <a class="btn btn-warning btn-lg" asp-action="Index">Volver</a>
+            </form>
+        </div>
+    </div>

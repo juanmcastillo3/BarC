@@ -1,0 +1,42 @@
+﻿@model BarC.Models.Producto
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+@using Microsoft.AspNetCore.Http
+
+@{
+    var role = @ViewBag.role;
+    if (role == 1)
+    {
+        Layout = "~/Views/Shared/_Menu.cshtml";
+    }
+    if (role == 2)
+    {
+        Layout = "~/Views/Shared/_MenuUsuario.cshtml";
+    }
+    ViewData["Title"] = "Details";
+}
+
+
+    <div class="intermedio">
+        <h2>Detalle de Producto</h2>
+        <h4>Producto: @Html.DisplayFor(model => model.NombreProducto) </h4>
+        <hr />
+        <dl class="dl-horizontal">
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Precio)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Precio)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Pedido)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Pedido.IdNumero)
+            </dd>
+        </dl>
+        <a class="btn btn-warning btn-lg" asp-action="Index">Volver</a>
+
+    </div>
+
+

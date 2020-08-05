@@ -1,0 +1,50 @@
+﻿@model BarC.Models.Producto
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+@using Microsoft.AspNetCore.Http
+
+@{
+    var role = @ViewBag.role;
+    if (role == 1)
+    {
+        Layout = "~/Views/Shared/_Menu.cshtml";
+    }
+    if (role == 2)
+    {
+        Layout = "~/Views/Shared/_MenuUsuario.cshtml";
+    }
+    ViewData["Title"] = "Delete";
+}
+
+
+    <div class="intermedio">
+
+        <h3>Esta seguro que desea eliminar este Producto?</h3>
+        <h4>Producto</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.NombreProducto)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.NombreProducto)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Precio)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Precio)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Pedido)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Pedido.IdNumero)
+            </dd>
+        </dl>
+
+        <form asp-action="Delete">
+            <input type="hidden" asp-for="Id" />
+            <input type="submit" value="Eliminar" class="btn btn-danger btn-lg" />
+            <a class="btn btn-warning btn-lg" asp-action="Index">Volver</a>
+        </form>
+    </div>

@@ -1,0 +1,28 @@
+﻿@model BarC.Models.Pedido
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Editar Pedido</h2>
+<hr />
+
+<div>
+    <a class="btn btn-warning btn-lg" href="@Url.Action("Create","Productoes")">Agregar Productos</a>
+    </div>
+<div>
+    <a class="btn btn-danger btn-lg" href="@Url.Action("Create","Productoes")">Eliminar Producto</a>
+</div>
+<div>
+    <a class="btn btn-danger btn-lg" href="@Url.Action("Consultar","Productoes")">Consultar Producto</a>
+</div>
+    <div>
+        <a class="btn btn-info btn-lg" asp-action="Index">Volver</a>
+    </div>
+    <div>
+        <a class="btn btn-info btn-lg" asp-action="Index">Volver</a>
+    </div>
+
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }
